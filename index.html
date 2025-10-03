@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Verificación</title>
+    <style>
+        /* Estilos CSS para simular una terminal */
+        body {
+            background-color: #000;
+            color: #00ff41; /* Color verde neon */
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            border: 1px solid #00ff41;
+            padding: 20px;
+            box-shadow: 0 0 15px #00ff41;
+        }
+        input[type="text"] {
+            background-color: #000;
+            color: #00ff41;
+            border: 1px solid #00ff41;
+            padding: 10px;
+            width: 70%;
+            font-family: inherit;
+            font-size: 1em;
+            margin-right: 10px;
+        }
+        button {
+            background-color: #00ff41;
+            color: #000;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+        }
+        #output {
+            margin-top: 20px;
+            min-height: 100px;
+        }
+        .error {
+            color: #ff0000; /* Texto de error en rojo */
+        }
+        .success {
+            color: #00ff41; /* Texto de éxito en verde */
+        }
+        h1 {
+            color: #fff; /* Títulos en blanco para que resalten */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="success">
+        &gt; Iniciando Sistema de Verificación<br>
+        &gt; Ingrese el Código de Validación de Relación<br>
+        &gt; El cógido es una palabra relacionada con una baraja.
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <label for="codigo">&gt; CÓDIGO:</label>
+        <input type="text" id="codigo" placeholder="Ej: AAAA1111BBBB">
+        <button onclick="verificarCompatibilidad()">VERIFICAR</button>
+    </div>
+
+    <div id="output">
+        </div>
+</div>
+
+<script>
+    // --- LÓGICA DE PROGRAMACIÓN ROMÁNTICA ---
+
+    // **IMPORTANTE: Define tu código secreto aquí.**
+    // Ej: "20240214azullatte" (Fecha + Color + Bebida)
+    const CODIGO_SECRETO = "Reina"; 
+    
+    function verificarCompatibilidad() {
+        const codigoIngresado = document.getElementById("codigo").value.trim();
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = ""; // Limpiar resultados anteriores
+
+        if (codigoIngresado === CODIGO_SECRETO) {
+            // SI ES CORRECTO: Muestra el mensaje de éxito y el botón "Resolver BUG"
+            outputDiv.innerHTML = `
+                <div class="success">
+                    &gt; [SUCCESS] Código de Validación Aceptado.<br><br>
+                    &gt; [STATUS] Bienvenida a nuestro sistema Luisa. Ahora presta mucha atención a todos los textos.<br><br>
+                    &gt; El sistema ha detectado una anomalía crítica (BUG) en la variable **"EstadoCivil"**.<br>
+                    &gt; Ejecute el parche de emergencia para resolver la anomalía.<br>
+                    <button style="background-color: red; color: white; margin-top: 20px;" onclick="resolverBug()">EJECUTAR</button>
+                </div>
+            `;
+        } else {
+            // SI ES INCORRECTO: Muestra el mensaje de error
+            outputDiv.innerHTML = `
+                <div class="error">
+                    &gt; [ERROR 404] Código no válido. **Novia no encontrada.**<br>
+                    &gt; Verifique sus datos e inténtelo de nuevo.
+                </div>
+            `;
+        }
+    }
+
+    function resolverBug() {
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = `
+            <div style="text-align: center; padding: 30px;">
+                <h1 style="color: red; font-size: 2.5em;">&gt; ¿QUIERES SER MI NOVIA? &lt;</h1>
+                <p style="font-size: 1.2em; color: #fff;">
+                    Tu respuesta es el único **parche** que necesito para que mi vida funcione sin errores.<br>
+                    El futuro de nuestro sistema depende de este **Commit**.
+                </p>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>
